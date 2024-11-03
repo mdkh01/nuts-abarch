@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nuts abrash</title>
+</head>
+<link rel="stylesheet" href="tht.css">
+
+<body>
+       
+    
+     <div >
+    <table>
+        <thead> 
+            <tr>
+                <th>ملاحظة</th>
+                <th id="e">القيمة الاجمالية</th>
+                <th id="w">السعر</th>
+     
+    <div class="rt">          
+          <div class="item1"><h2>محامص الابرش</h2></div>
+
+        <div class="item2">لتحميص كافة انواع  
+            الموالح والمكسرات</div>
+            
+            <div class="item3">س.ت6784</div>            
+        <div class="item4">رقم الفاتورة฿12</div>
+        <div class="item5"><input class="data" id="date" type="date"> </div>
+        <div><input id="txt" type="txt" >المقيم في:</div>
+        <div class="item6" label for="txt"  selcted></label>
+            <input id="txt" type="txt">المطلوب من السيد</div>
+        <div class="item7"><h6>العنوان:اطمة شارع المخيمات</h6></div>
+        <div class="item8" label for="txt"></label>
+                 <th id="q">العدد</th>
+                <th>نوع البضاعة</th>
+                <th>.</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td> <label for="txt" id="td1"></label>
+              <input id="fullname" type="text" required></td>
+
+                <td> <label for="number" id="td2"></label>
+                    <input id="gender" type="number"placeholder="قيمة اجمالبة" ></td>
+
+                <td><label for="number" id="td3" > </label>
+                    <input id="name" type="number" placeholder="السعر"></td>
+
+                <td> <label for="number" id="td4" ></label>
+                    <input id="pass" type="number"   placeholder="kg" ></td>
+
+                <td> <label for="txt" id="td5"></label>
+                    <input id="pas" type="text"  placeholder="اسم البضاعة"> </td>
+                <td>1</td>
+            </tr>
+
+
+             <tr>
+                <td>
+                <class="total"><label for="number" id="td6">المجموع فقط</label>
+                    <input id="pa" type="number">
+                </tr>
+        </tbody>
+    </table>
+    <button onclick="ExportToExcel('xlsx')" >ارسال</button> 
+     </div>
+     
+   <!--- <form action="">
+        <label >Username</label>
+        <input type="text" id="" Value="">
+        <br>
+        <label>UserGender</label>
+        <input type="text" id="" Value="">
+        <br>
+        <label>Username</label>
+        <input type="text" id="" Value="">
+        <br>
+        <label>Password</label>
+        <input type="password" id="" Value="">
+        <br>
+        <button onclick="ExportToExcel()">Export Data To Excel</button>
+        
+    </form>
+
+    <table id="tbl" border="1" style="display:;">
+        <thead>
+            <th>UserFullName</th>
+            <th>UserGender</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Password</th>
+            <th>Password</th>
+        </thead>
+        <tr>
+            <td id="td1">val1</td>
+            <td id="td2">val2</td>
+            <td id="td3">val3</td>
+            <td id="td4">val4</td>
+            <td id="td5">val5</td>
+            <td id="td6">val6</td>
+        </tr>
+    </table>
+     -->
+
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <!-- <script>
+        function ExportToExcel(type, fn, dl) 
+        {
+            //Get values from inputs to table
+            document.getElementById("td1").innerHTML = document.getElementById("fullname").value;
+            document.getElementById("td2").innerHTML = document.getElementById("gender").value;
+            document.getElementById("td3").innerHTML = document.getElementById("name").value;
+            document.getElementById("td4").innerHTML = document.getElementById("pass").value;
+            document.getElementById("td5").innerHTML = document.getElementById("pas").value;
+            document.getElementById("td6").innerHTML = document.getElementById("pa").value;
+            var elt = document.getElementById('tbl');
+            var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+            return dl ?
+           XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+            XLSX.writeFile(wb, fn || ('NagehSheet.' + (type || 'xlsx')));
+        }
+    </script> -->
+    <!-- ضمن ملف HTML -->
+<button onclick="submitForm()">ارسال</button>
+
+<script>
+    function submitForm() {
+        const data = {
+            note: document.getElementById("fullname").value,
+            totalValue: document.getElementById("gender").value,
+            price: document.getElementById("name").value,
+            quantity: document.getElementById("pass").value,
+            itemName: document.getElementById("pas").value,
+        };
+
+        fetch('/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+<script src="server.js"></script>
+</body>
+</html>
+     
+</body>
+</html>

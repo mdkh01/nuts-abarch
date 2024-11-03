@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آلة حاسبة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #17cfeb;
+        }
+        .calculator {
+            background: rgb(16, 220, 152);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        button {
+            width: 30%;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 5px 2px;
+            border-radius: 15PX;
+        }
+        button:hover {
+            background-color: #024ef3;
+        }
+        .history {
+            margin-top: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="result" disabled />
+    <div>
+        <button onclick="clearResult()">C</button>
+        <button onclick="toggleHistory()">عرض  السابقة</button>
+        <button onclick="deleteLastCharacter()">⌫</button>
+        <button onclick="appendToResult('1')">1</button>
+        <button onclick="appendToResult('2')">2</button>
+        <button onclick="appendToResult('3')">3</button>
+        <button onclick="appendToResult('4')">4</button>
+        <button onclick="appendToResult('5')">5</button>
+        <button onclick="appendToResult('6')">6</button>
+        <button onclick="appendToResult('7')">7</button>
+        <button onclick="appendToResult('8')">8</button>
+        <button onclick="appendToResult('9')">9</button>
+        <button onclick="appendToResult('+')">+</button>
+        <button onclick="appendToResult('0')">0</button>
+        <button onclick="appendToResult('×')">×</button>
+        <button onclick="appendToResult('-')">-</button>
+        <button onclick="appendToResult('.')">.</button>
+        <button onclick="appendToResult('÷')">÷</button>
+        <button onclick="calculateResult()">=</button>
+    </div>
+    <div id="history" class="history" style="display: none;"></div>
+</div>
+
+<script>
+    let history = [];
+
+    function appendToResult(value) {
+        const resultInput = document.getElementById('result');
+        if (value === '.' && resultInput.value.includes('.')) {
+            return; // لا تسمح بإضافة أكثر من فاصلة واحدة
+        }
+        resultInput.value += value;
+    }
+
+    function clearResult() {
+        document.getElementById('result').value = '';
+    }
+
+    function deleteLastCharacter() {
+        const resultInput = document.getElementById('result');
+        resultInput.value = resultInput.value.slice(0, -1);
+    }
+
+    function calculateResult() {
+        const resultInput = document.getElementById('result');
+        let expression = resultInput.value.replace('×', '*').replace('÷', '/');
+        try {
+            const result = eval(expression);
+            history.push(`${resultInput.value} = ${result}`);
+            resultInput.value = result;
+            updateHistory();
+        } catch (error) {
+            resultInput.value = 'عملية حسابية غير صحيحة';
+        }
+    }
+
+    function updateHistory() {
+        const historyDiv = document.getElementById('history');
+        historyDiv.innerHTML = history.map(entry => `<p>${entry}</p>`).join('');
+    }
+
+    function toggleHistory() {
+        const historyDiv = document.getElementById('history');
+        historyDiv.style.display = historyDiv.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>

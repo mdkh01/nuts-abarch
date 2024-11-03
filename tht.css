@@ -1,0 +1,110 @@
+*{
+    padding: 0;
+    margin: 0;
+    color:black;
+    font-family: sans-serif;
+}
+body{
+    background:rgb(220, 243, 230);
+
+}
+nav{
+    height: 45px;
+    width: 100% ;
+    padding: 2px;
+    margin: 2px;
+
+}
+.box{
+    width: 100px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+    flex-shrink: 0;
+}
+img{
+height: 88vh;
+width:  100%;
+
+    background:scroll;
+    width: 95%;}
+.profile{
+    display:flex;
+    align-items: top;
+    gap: 30px;
+}
+.profile h2{
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.rt{
+    display: grid;
+    padding: 2px;
+    height: 100px;
+    background:gray;
+   grid-template-columns: repeat(  3,auto);
+   grid-template-rows: repeat(4,auto);
+   grid-template-rows: 20px;
+   gap: 10;
+} 
+.rt div{
+    background: gray;
+}
+.data{
+    color: rgb(16, 16, 17);}
+
+.rt.item8 input{
+    width: 45px;
+
+}
+.rt.item1 {
+  
+
+    color: red;
+    height: 15px;
+}
+.rt.item6 input{
+    height: 20px;
+
+}
+
+
+table{height: 20px;
+    padding: 1px;
+    width: 100%;
+    background:white;
+    align-items: center;
+    border-spacing: 1px;
+    border-radius: 30px;
+}
+th{
+    padding:  1px;
+    text-align: center;
+    height: 10px;
+    background:yellow;
+    border: 1px solid black;
+    width: 50px;
+    border-radius: 9px;
+
+}
+td{
+    height: 25px;
+    background: gray;
+    text-align: center;
+    vertical-align:middle;
+    border: 1px solid black;
+    width: 50px;
+
+}
+td input{
+    width: 70px;
+}
+
+td .total input{
+    width: 3px;
+    height: 4px;
+    color: rgb(194, 18, 79);
+    align-items:lift;
+    justify-content:center;
+}
